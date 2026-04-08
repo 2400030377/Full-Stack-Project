@@ -1,38 +1,46 @@
 import { Link, Outlet, useLocation, useNavigate } from "react-router";
-import { Search, ChevronDown } from "lucide-react";
+import { Search, ChevronDown, LogOut, User } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import emblemImage from "figma:asset/3f2aee9b7deb0d39b0314a28b63fbee3c2e82c24.png";
 import { useIndiaColors } from "../hooks/use-india-colors";
+import { useAuth } from "../contexts/auth-context";
+
 const LANGUAGES = [
   { code: "en", name: "English", nativeName: "English" },
-  { code: "hi", name: "Hindi", nativeName: "\u0939\u093F\u0928\u094D\u0926\u0940" },
-  { code: "bn", name: "Bengali", nativeName: "\u09AC\u09BE\u0982\u09B2\u09BE" },
-  { code: "te", name: "Telugu", nativeName: "\u0C24\u0C46\u0C32\u0C41\u0C17\u0C41" },
-  { code: "mr", name: "Marathi", nativeName: "\u092E\u0930\u093E\u0920\u0940" },
-  { code: "ta", name: "Tamil", nativeName: "\u0BA4\u0BAE\u0BBF\u0BB4\u0BCD" },
-  { code: "gu", name: "Gujarati", nativeName: "\u0A97\u0AC1\u0A9C\u0AB0\u0ABE\u0AA4\u0AC0" },
-  { code: "ur", name: "Urdu", nativeName: "\u0627\u0631\u062F\u0648" },
-  { code: "kn", name: "Kannada", nativeName: "\u0C95\u0CA8\u0CCD\u0CA8\u0CA1" },
-  { code: "or", name: "Odia", nativeName: "\u0B13\u0B21\u0B3C\u0B3F\u0B06" },
-  { code: "ml", name: "Malayalam", nativeName: "\u0D2E\u0D32\u0D2F\u0D3E\u0D33\u0D02" },
-  { code: "pa", name: "Punjabi", nativeName: "\u0A2A\u0A70\u0A1C\u0A3E\u0A2C\u0A40" },
-  { code: "as", name: "Assamese", nativeName: "\u0985\u09B8\u09AE\u09C0\u09AF\u09BC\u09BE" },
-  { code: "sa", name: "Sanskrit", nativeName: "\u0938\u0902\u0938\u094D\u0915\u0943\u0924\u092E\u094D" }
+  { code: "hi", name: "Hindi", nativeName: "हिंदी" },
+  { code: "bn", name: "Bengali", nativeName: "বাংলা" },
+  { code: "te", name: "Telugu", nativeName: "తెలుగు" },
+  { code: "mr", name: "Marathi", nativeName: "मराठी" },
+  { code: "ta", name: "Tamil", nativeName: "தமிழ்" },
+  { code: "gu", name: "Gujarati", nativeName: "ગુજરાતી" },
+  { code: "ur", name: "Urdu", nativeName: "اردو" },
+  { code: "kn", name: "Kannada", nativeName: "ಕನ್ನಡ" },
+  { code: "or", name: "Odia", nativeName: "ଓଡିଆ" },
+  { code: "ml", name: "Malayalam", nativeName: "മലയാളം" },
+  { code: "pa", name: "Punjabi", nativeName: "ਪੰਜਾਬੀ" },
+  { code: "as", name: "Assamese", nativeName: "অসমীয়া" },
+  { code: "sa", name: "Sanskrit", nativeName: "संस्कृतम्" }
 ];
+
 function MainLayout() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { user, logout } = useAuth();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const languageMenuRef = useRef(null);
+  const userMenuRef = useRef(null);
   const colors = useIndiaColors();
+
   const navLinks = [
     { label: "Read", path: "/read" },
     { label: "Explore", path: "/explore" },
     { label: "History", path: "/history" },
     { label: "Preamble", path: "/preamble" }
   ];
+
   const isActive = (path) => location.pathname === path;
   const currentLanguage = LANGUAGES.find((lang) => lang.code === selectedLanguage) || LANGUAGES[0];
   const textColor = colors.primary;
@@ -42,11 +50,15 @@ function MainLayout() {
       if (!languageMenuRef.current?.contains(event.target)) {
         setIsLanguageDropdownOpen(false);
       }
+      if (!userMenuRef.current?.contains(event.target)) {
+        setIsUserMenuOpen(false);
+      }
     };
 
     const onEscape = (event) => {
       if (event.key === "Escape") {
         setIsLanguageDropdownOpen(false);
+        setIsUserMenuOpen(false);
       }
     };
 
@@ -57,6 +69,12 @@ function MainLayout() {
       document.removeEventListener("keydown", onEscape);
     };
   }, []);
+
+  const handleLogout = () => {
+    logout();
+    setIsUserMenuOpen(false);
+    navigate('/login');
+  };
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
@@ -91,6 +109,71 @@ function MainLayout() {
                   <div className="font-semibold text-base sm:text-lg leading-tight">India</div>
                 </div>
               </Link>
+
+              <div className="flex items-center gap-2 sm:gap-3">
+                {user ? (
+                  <div className="relative" ref={userMenuRef}>
+                    <button
+                      type="button"
+                      aria-label="User menu"
+                      onClick={() => setIsUserMenuOpen((open) => !open)}
+                      className="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2"
+                      style={{ "--tw-ring-color": `${textColor}55` }}
+                    >
+                      <User className="w-4 h-4" />
+                      <span className="hidden sm:inline text-sm font-medium text-gray-700">
+                        {user.fullName}
+                      </span>
+                      <ChevronDown className="w-4 h-4" />
+                    </button>
+
+                    {isUserMenuOpen && (
+                      <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                        <div className="px-4 py-3 border-b border-gray-100">
+                          <p className="text-sm font-medium text-gray-900">{user.fullName}</p>
+                          <p className="text-xs text-gray-500">{user.email}</p>
+                          {user.role && (
+                            <p className="text-xs text-gray-600 capitalize mt-1">Role: {user.role.replace('_', ' ')}</p>
+                          )}
+                        </div>
+                        {user.role && (
+                          <button
+                            onClick={() => {
+                              const dashboardMap = {
+                                admin: '/admin/dashboard',
+                                educator: '/dashboard/educator',
+                                citizen: '/dashboard/citizen',
+                                legal_expert: '/dashboard/legal-expert',
+                              };
+                              navigate(dashboardMap[user.role] || '/');
+                              setIsUserMenuOpen(false);
+                            }}
+                            className="w-full text-left px-4 py-2 text-sm text-blue-600 hover:bg-blue-50 transition-colors flex items-center gap-2 border-b border-gray-100"
+                          >
+                            <span>📊</span>
+                            Dashboard
+                          </button>
+                        )}
+                        <button
+                          onClick={handleLogout}
+                          className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors flex items-center gap-2"
+                        >
+                          <LogOut className="w-4 h-4" />
+                          Logout
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="px-3 py-2 text-sm font-medium text-white rounded-md transition-colors"
+                    style={{ backgroundColor: textColor }}
+                  >
+                    Sign In
+                  </Link>
+                )}
+              </div>
 
               <div className="relative" ref={languageMenuRef}>
                 <button
@@ -183,6 +266,8 @@ function MainLayout() {
               <a href="#" className="text-gray-600 hover:text-[#000080] text-sm">About</a>
               <a href="#" className="text-gray-600 hover:text-[#000080] text-sm">Contact</a>
               <a href="#" className="text-gray-600 hover:text-[#000080] text-sm">Accessibility</a>
+              <Link to="/roles" className="text-gray-600 hover:text-[#000080] text-sm">Platform Roles</Link>
+              <Link to="/admin/login" className="text-gray-400 hover:text-gray-600 text-xs">Admin</Link>
             </div>
           </div>
         </div>
@@ -190,6 +275,7 @@ function MainLayout() {
     </div>
   );
 }
+
 export {
   MainLayout
 };

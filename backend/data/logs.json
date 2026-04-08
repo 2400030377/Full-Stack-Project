@@ -1,0 +1,50 @@
+[
+  {
+    "id": "log-1",
+    "type": "system_start",
+    "message": "Backend server started successfully.",
+    "timestamp": "2026-04-07T00:00:00.000Z"
+  },
+  {
+    "id": "1775501184590-e9cc9c9a496fd8",
+    "type": "admin_login",
+    "message": "Platform Administrator (admin@constitution.gov)",
+    "timestamp": "2026-04-06T18:46:24.590Z"
+  },
+  {
+    "id": "1775501901767-13df0a3e7907c8",
+    "type": "user_signup",
+    "message": "Test (test@gmail.com)",
+    "timestamp": "2026-04-06T18:58:21.767Z"
+  },
+  {
+    "id": "1775502202214-8886324f74d95",
+    "type": "user_signup",
+    "message": "Test2 (test2@gmail.com)",
+    "timestamp": "2026-04-06T19:03:22.214Z"
+  },
+  {
+    "id": "1775657743756-458a3c7ea0d608",
+    "type": "admin_login",
+    "message": "Platform Administrator (admin@constitution.gov)",
+    "timestamp": "2026-04-08T14:15:43.756Z"
+  },
+  {
+    "id": "1775657823543-a9a7ea6aebd45",
+    "type": "admin_login",
+    "message": "Platform Administrator (admin@constitution.gov)",
+    "timestamp": "2026-04-08T14:17:03.543Z"
+  },
+  {
+    "id": "1775658243746-d6961675776cb8",
+    "type": "user_signup",
+    "message": "deepakk (deepakk@gmail.com)",
+    "timestamp": "2026-04-08T14:24:03.746Z"
+  },
+  {
+    "id": "1775667062588-47ec21f8ae9eb8",
+    "type": "user_signup",
+    "message": "deepak (dee@1gmail.com)",
+    "timestamp": "2026-04-08T16:51:02.588Z"
+  }
+]

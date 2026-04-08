@@ -1,0 +1,20 @@
+[
+  {
+    "id": "leader-1",
+    "name": "Droupadi Murmu",
+    "position": "President of India",
+    "term": "2022-2027",
+    "description": "The current President of India, serving as the constitutional head of state.",
+    "image": "",
+    "createdAt": "2026-04-07T00:00:00.000Z"
+  },
+  {
+    "id": "leader-2",
+    "name": "Narendra Modi",
+    "position": "Prime Minister of India",
+    "term": "2019-2024",
+    "description": "Leads the Union government and oversees executive administration.",
+    "image": "",
+    "createdAt": "2026-04-07T00:00:00.000Z"
+  }
+]

@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { useLocation } from "react-router";
+import emblemImage from "figma:asset/3f2aee9b7deb0d39b0314a28b63fbee3c2e82c24.png";
 import { ChevronRight, ChevronDown } from "lucide-react";
 import { useIndiaColors } from "../hooks/use-india-colors";
 
@@ -93,6 +94,9 @@ function ReadPage() {
 
   return (
     <div className="min-h-[calc(100vh-10rem)] bg-gray-50/50">
+      <div className="text-center mb-6">
+        <img src={emblemImage} alt="State Emblem" className="w-16 h-16 mx-auto" />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-[20rem_1fr] gap-6">
           <aside className="border border-gray-200 bg-white rounded-xl overflow-hidden h-fit lg:sticky lg:top-28">

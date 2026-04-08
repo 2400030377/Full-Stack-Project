@@ -1,0 +1,35 @@
+[
+  {
+    "id": "content-1",
+    "title": "Fundamental Rights of Indian Citizens",
+    "summary": "Overview of the key rights guaranteed by the Constitution of India.",
+    "category": "Fundamental Rights",
+    "body": "The Constitution of India guarantees a wide range of fundamental rights, including the right to equality, freedom of speech, religious freedom, and protection against exploitation.",
+    "author": "Constitution Team",
+    "createdAt": "2026-04-07T00:00:00.000Z",
+    "updatedAt": "2026-04-07T00:00:00.000Z",
+    "status": "published"
+  },
+  {
+    "id": "content-2",
+    "title": "Directive Principles of State Policy",
+    "summary": "How directive principles shape government policy and public welfare.",
+    "category": "Directive Principles",
+    "body": "Directive Principles are guidelines to the state for securing a just society. They include provisions for adequate livelihood, education, and health care.",
+    "author": "Constitution Team",
+    "createdAt": "2026-04-07T00:00:00.000Z",
+    "updatedAt": "2026-04-07T00:00:00.000Z",
+    "status": "published"
+  },
+  {
+    "id": "content-3",
+    "title": "Structure of National Government",
+    "summary": "A summary of the Union and State government architecture.",
+    "category": "Government Structure",
+    "body": "The Constitution lays down a federal system with a strong centre, defining roles for the Parliament, State Legislatures, Judiciary, and executive bodies.",
+    "author": "Constitution Team",
+    "createdAt": "2026-04-07T00:00:00.000Z",
+    "updatedAt": "2026-04-07T00:00:00.000Z",
+    "status": "published"
+  }
+]

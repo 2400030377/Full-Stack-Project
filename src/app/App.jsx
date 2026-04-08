@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { RouterProvider } from "react-router";
 import { router } from "./routes";
 import { EntryScreen } from "./components/entry-screen";
+import { AuthProvider } from "./contexts/auth-context";
+import { AdminProvider } from "./contexts/admin-auth-context";
 
 function App() {
   const [showEntry, setShowEntry] = useState(true);
@@ -26,10 +28,14 @@ function App() {
   }
 
   return (
-    <div className="size-full" style={{ fontFamily: "var(--font-body)" }}>
-      {showEntry && <EntryScreen onComplete={handleEntryComplete} />}
-      <RouterProvider router={router} />
-    </div>
+    <AdminProvider>
+      <AuthProvider>
+        <div className="size-full" style={{ fontFamily: "var(--font-body)" }}>
+          {showEntry && <EntryScreen onComplete={handleEntryComplete} />}
+          <RouterProvider router={router} />
+        </div>
+      </AuthProvider>
+    </AdminProvider>
   );
 }
 

@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "dev": "vite"
+    "dev": "vite",
+    "start:backend": "cd backend && npm start",
+    "dev:all": "npx concurrently \"npm run start:backend\" \"npm run dev\""
   },
   "dependencies": {
     "@emotion/react": "11.14.0",

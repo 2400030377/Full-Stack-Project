@@ -1,5 +1,6 @@
 import { Building, Calendar, Landmark } from "lucide-react";
 import { LeadersSection } from "./LeadersSection";
+import emblemImage from "figma:asset/3f2aee9b7deb0d39b0314a28b63fbee3c2e82c24.png";
 import { useIndiaColors } from "../hooks/use-india-colors";
 
 const COMMITTEES = [
@@ -28,6 +29,9 @@ function ExplorePage() {
 
   return (
     <div className="min-h-screen bg-gray-50/50">
+      <div className="text-center mt-8">
+        <img src={emblemImage} alt="State Emblem" className="w-16 h-16 mx-auto" />
+      </div>
       <section className="py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-2xl border border-gray-200 bg-white p-7 md:p-10 shadow-sm">

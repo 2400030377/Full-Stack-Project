@@ -1,0 +1,38 @@
+[
+  {
+    "id": "00da8a9d-24f3-430e-8a18-a9fd039045a4",
+    "email": "test@gmail.com",
+    "password": "123456",
+    "fullName": "Test",
+    "role": "citizen",
+    "createdAt": "2026-04-06T18:58:21.764Z",
+    "token": "b30790bc-82c4-4738-affb-e74e0233e014"
+  },
+  {
+    "id": "920d503b-b73b-4902-ac6e-dd95480b23bf",
+    "email": "test2@gmail.com",
+    "password": "123456",
+    "fullName": "Test2",
+    "role": "citizen",
+    "createdAt": "2026-04-06T19:03:22.211Z",
+    "token": "439a283d-a5f5-419f-a42c-1959c4127c42"
+  },
+  {
+    "id": "789e7c42-21c3-45e6-bf13-cf8b3c1ec7dc",
+    "email": "deepakk@gmail.com",
+    "password": "56565656",
+    "fullName": "deepakk",
+    "role": "citizen",
+    "createdAt": "2026-04-08T14:24:03.741Z",
+    "token": "fe6ca13d-2760-4575-861f-d07e8d04f8dd"
+  },
+  {
+    "id": "7f2d51cd-f53d-45f3-bd5a-5655636d8f3b",
+    "email": "dee@1gmail.com",
+    "password": "1234567",
+    "fullName": "deepak",
+    "role": "citizen",
+    "createdAt": "2026-04-08T16:51:02.579Z",
+    "token": "ea4d8e20-1e62-4d1a-ab62-fb866b73ec12"
+  }
+]
